@@ -1,7 +1,7 @@
 shader_type canvas_item;
 render_mode unshaded;
 
-uniform int type : hint_range(0, 3, 1) = 0;
+uniform int type : hint_range(0, 4, 1) = 0;
 
 vec3 rgbtosrgb(vec3 c) {
     c.r = c.r <= 0.04045 ? c.r / 12.92 : pow((c.r + 0.055) / 1.055, 2.4);
@@ -62,6 +62,11 @@ vec3 tritanopia(vec3 c) {
     return m * c;
 }
 
+vec3 achromatopsia(vec3 c) {
+    vec3 v = vec3(0.212656, 0.715158, 0.072186);
+    return vec3(dot(c, v));
+}
+
 void fragment() {
     vec3 originalColor = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgb;
  
@@ -75,6 +80,8 @@ void fragment() {
         outputColor = deuteranopia(originalColor);
     else if (type == 3)
         outputColor = tritanopia(originalColor);
+    else if (type == 4)
+        outputColor = achromatopsia(originalColor);
 
     outputColor = lmstosrgb(outputColor);
     outputColor = srgbtorgb(outputColor);

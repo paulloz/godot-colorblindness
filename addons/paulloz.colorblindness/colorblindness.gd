@@ -1,7 +1,7 @@
 tool
 extends ColorRect
 
-enum TYPE { None, Protanopia, Deuteranopia, Tritanopia }
+enum TYPE { None, Protanopia, Deuteranopia, Tritanopia, Achromatopsia }
 
 export(TYPE) onready var Type = TYPE.None setget set_type
 
