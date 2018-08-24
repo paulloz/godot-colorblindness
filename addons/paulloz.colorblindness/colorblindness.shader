@@ -3,6 +3,20 @@ render_mode unshaded;
 
 uniform int type : hint_range(0, 3, 1) = 0;
 
+vec3 rgbtosrgb(vec3 c) {
+    c.r = c.r <= 0.04045 ? c.r / 12.92 : pow((c.r + 0.055) / 1.055, 2.4);
+    c.g = c.g <= 0.04045 ? c.g / 12.92 : pow((c.g + 0.055) / 1.055, 2.4);
+    c.b = c.b <= 0.04045 ? c.b / 12.92 : pow((c.b + 0.055) / 1.055, 2.4);
+    return c;
+}
+
+vec3 srgbtorgb(vec3 c) {
+    c.r = c.r <= 0.0031308 ? c.r * 12.92 : (pow(1.055 * c.r, 0.41666) - 0.055);
+    c.g = c.g <= 0.0031308 ? c.g * 12.92 : (pow(1.055 * c.g, 0.41666) - 0.055);
+    c.b = c.b <= 0.0031308 ? c.b * 12.92 : (pow(1.055 * c.b, 0.41666) - 0.055);
+    return c;
+}
+
 vec3 srgbtolms(vec3 c) {
     mat3 m = mat3(
         vec3(0.31399022, 0.15537241, 0.01775239),
@@ -51,7 +65,7 @@ vec3 tritanopia(vec3 c) {
 void fragment() {
     vec3 originalColor = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgb;
  
-    originalColor = pow(originalColor, vec3(2.2));
+    originalColor = rgbtosrgb(originalColor);
     originalColor = srgbtolms(originalColor);
     
     vec3 outputColor = originalColor;
@@ -62,7 +76,8 @@ void fragment() {
     else if (type == 3)
         outputColor = tritanopia(originalColor);
 
-    outputColor.rgb = pow(lmstosrgb(outputColor), vec3(1.0/2.2));
+    outputColor = lmstosrgb(outputColor);
+    outputColor = srgbtorgb(outputColor);
     
     COLOR.rgb = outputColor;
 }
