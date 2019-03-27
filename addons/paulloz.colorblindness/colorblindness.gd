@@ -1,4 +1,5 @@
 tool
+class_name Colorblindness
 extends Node
 
 enum TYPE { None, Protanopia, Deuteranopia, Tritanopia, Achromatopsia }
