@@ -16,7 +16,7 @@ The Godot Ishihara plate has been generated with [this tool](https://franciscouz
 
 - Install the plugin through Godot's AssetLib
 - Activate it from the Plugin menu (`AssetLib` => `Plugins` button)
-- This adds a new control called `Colorblindness` under `ColorRect`. 
+- This adds a new control called `Colorblindness` under `Node`. 
 - Create a new `CanvasLayer` and add a `Colorblindness` control to it in your scene.
 - Specify the `Type` property (eg. `Deuteranopia`)
 
