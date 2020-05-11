@@ -25,3 +25,7 @@ func _ready():
         self.Type = self.temp
         self.temp = null
 
+    self.get_tree().root.connect('size_changed', self, '_on_viewport_size_changed')
+
+func _on_viewport_size_changed():
+    self.rect.rect_min_size = self.rect.get_viewport_rect().size
