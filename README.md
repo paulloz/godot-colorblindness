@@ -22,8 +22,6 @@ The Godot Ishihara plate has been generated with [this tool](https://franciscouz
 
 Everything that renders under the control will appear tinted to match your selected color-blindness mode.
 
-![Godot control tree](https://i.imgur.com/ipMGocW.png)
-
 # Sample
 
 The following sample shows normal vision, Protanopia, Deuteranopia, and Tritanopia (in that order).
