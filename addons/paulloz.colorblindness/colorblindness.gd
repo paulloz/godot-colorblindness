@@ -1,6 +1,6 @@
 tool
-class_name Colorblindness
-extends Node
+class_name Colorblindness, "res://addons/paulloz.colorblindness/colorblindness.svg"
+extends CanvasLayer
 
 enum TYPE { None, Protanopia, Deuteranopia, Tritanopia, Achromatopsia }
 
