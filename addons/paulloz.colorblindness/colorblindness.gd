@@ -21,6 +21,7 @@ func _ready():
 
     self.rect.rect_min_size = self.rect.get_viewport_rect().size
     self.rect.material = load("res://addons/paulloz.colorblindness/colorblindness.material")
+    self.rect.set_mouse_filter(Control.MOUSE_FILTER_IGNORE)
     if self.temp:
         self.Type = self.temp
         self.temp = null
