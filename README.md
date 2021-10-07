@@ -17,13 +17,17 @@ The Godot Ishihara plate has been generated with [this tool](https://franciscouz
 
 # Usage
 
-- Install the plugin through Godot's AssetLib
-- Activate it from the Plugin menu (`AssetLib` => `Plugins` button)
+- Install the plugin through Godot's AssetLib.
+- Activate it from the Plugin menu (`AssetLib` => `Plugins` button).
 - This adds a new control called `Colorblindness` under `CanvasLayer`. 
 - Create a new `Colorblindness` control to it in your scene.
-- Specify the `Type` property (eg. `Deuteranopia`)
+- Specify the `Type` property (eg. `Deuteranopia`).
 
 Everything that renders under the control will appear tinted to match your selected color-blindness mode.
+
+# Known issues
+
+- Setting `Framebuffer Allocation` to `2D without Sampling` makes the addon unusable ([#4](https://github.com/paulloz/godot-colorblindness/issues/4)).
 
 # Sample
 
