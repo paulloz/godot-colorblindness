@@ -5,7 +5,8 @@ extends CanvasLayer
 
 enum TYPE { None, Protanopia, Deuteranopia, Tritanopia, Achromatopsia }
 
-@export var Type: TYPE = TYPE.None:
+@export
+var Type: TYPE = TYPE.None:
 	set(value):
 		if rect.material:
 			rect.material.set_shader_parameter("type", value)
