@@ -32,4 +32,4 @@ func _ready():
 	self.get_tree().root.size_changed.connect(_on_viewport_size_changed)
 
 func _on_viewport_size_changed():
-	self.rect.rect_min_size = self.rect.get_viewport_rect().size
+	self.rect.custom_minimum_size = self.rect.get_viewport_rect().size
